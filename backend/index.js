@@ -16,7 +16,7 @@ app.get("/", (req,res) => {
     res.send("Backend running");
 });
 
-app.post("/api/contact", async (req, res) => {
+app.post("https://portfolio-u0tl.onrender.com/api/contact", async (req, res) => {
     const { name, email, message } = req.body;
 
     const newMessage = new MessageModel({
