@@ -12,6 +12,10 @@ const {MessageModel} = require("./model/MessageModel")
 app.use(cors());
 app.use(express.json());
 
+app.get("/", (req,res) => {
+    res.send("Backend running");
+});
+
 app.post("/api/contact", async (req, res) => {
     const { name, email, message } = req.body;
 
