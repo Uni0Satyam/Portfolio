@@ -1,6 +1,6 @@
 # 🚀 Personal Portfolio Website
 
-A modern, responsive **developer portfolio** showcasing my projects, skills, and experience.  
+A modern, responsive **portfolio** showcasing my projects, skills, and experience.  
 Built with **React + Vite** on the frontend and **Node.js + Express + MongoDB** on the backend.
 
 ## 🌐 Live Demo
@@ -16,6 +16,7 @@ Built with **React + Vite** on the frontend and **Node.js + Express + MongoDB** 
 - 📨 Contact form with **MongoDB** integration
 - 🌙 Clean and minimal layout
 - 🔒 Environment variable support
+- ✨ Animation
 
 ---
 
