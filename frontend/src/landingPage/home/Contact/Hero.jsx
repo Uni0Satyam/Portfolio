@@ -76,7 +76,7 @@ function Hero() {
         e.preventDefault();
 
         try {
-            const res = await axios.post("/api/contact", formData);
+            const res = await axios.post("https://portfolio-u0tl.onrender.com/api/contact", formData);
 
             alert(res.data.message);
 
