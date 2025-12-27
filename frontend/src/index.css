@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+html, body {
+  width: 100%;
+  overflow-x: clip;
+}
+
+:root {
+  --primary: #84CC16;
+  --secondary: #5F684A;
+  --dark: #0F172A;
+  --secondary-dark: #2C2D30;
+  --white: white;
+}
+
+::selection {
+  background-color: white;
+  color: #84CC16;
+}
+
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.8);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 8s infinite;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+body{
+  cursor: none;
+}
+
+@media (min-width: 768px) {
+  * {
+    cursor: none;
+  }
+}
+
+/* 
+* {
+  outline: 1px solid red;
+} */
