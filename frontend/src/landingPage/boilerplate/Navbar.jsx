@@ -6,16 +6,22 @@ import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import Icon from "./Icon";
-import { Link } from "react-router-dom"
+import { Link , useLocation} from "react-router-dom"
 import gsap from "gsap";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 
 const Navbar = () => {
     const [activeSection, setActiveSection] = useState("home");
-    const [islightMode, setIsLightMode] = useState(true);
     const [navIsOpen, setNavIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+
+    const location = useLocation();
+
+    useEffect(() => {
+        const path = location.pathname.replace("/","");
+        setActiveSection(path || "home");
+    }, [location]);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -47,28 +53,28 @@ const Navbar = () => {
 
                     <div className={`mx-1 p-1.5 rounded flex hover:bg-[#5F684A] gap-1 cursor-pointer
                         ${activeSection === "home" ? "bg-gray-200 hover:bg-white" : "text-gray-300"}`}
-                        onClick={() => setActiveSection("home")}> <Link to="/">
+                        > <Link to="/">
                             <HomeIcon className="transition-transform duration-600 ease-in-out hover:rotate-[8deg] me-1" />
                             {activeSection === "home" && <span>Home</span>}</Link>
                     </div>
 
                     <div className={`mx-1 p-1.5 rounded flex hover:bg-[#5F684A] gap-1 cursor-pointer
                         ${activeSection === "about" ? "bg-gray-200 hover:bg-white" : "text-gray-300"}`}
-                        onClick={() => setActiveSection("about")}> <Link to="/about">
+                        > <Link to="/about">
                             <PersonIcon className="transition-transform duration-600 ease-in-out hover:rotate-[-8deg] me-1" />
                             {activeSection === "about" && <span>About</span>}</Link>
                     </div>
 
                     <div className={`mx-1 p-1.5 rounded flex hover:bg-[#5F684A] gap-1 cursor-pointer 
                         ${activeSection === "project" ? "bg-gray-200 hover:bg-white" : "text-gray-300"}`}
-                        onClick={() => setActiveSection("project")}> <Link to="/project">
+                        > <Link to="/project">
                             <FolderIcon className="transition-transform duration-600 ease-in-out hover:rotate-[8deg] me-1" />
                             {activeSection === "project" && <span>Project</span>}</Link>
                     </div>
 
                     <div className={`mx-1 p-1.5 rounded flex hover:bg-[#5F684A] gap-1 cursor-pointer 
                         ${activeSection === "contact" ? "bg-gray-200 hover:bg-white" : "text-gray-300"}`}
-                        onClick={() => setActiveSection("contact")}> <Link to="/contact">
+                        > <Link to="/contact">
                             <MailIcon className="transition-transform duration-600 ease-in-out hover:rotate-[-8deg] me-1" />
                             {activeSection === "contact" && <span>Contact</span>}</Link>
                     </div>

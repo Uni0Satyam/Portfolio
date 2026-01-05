@@ -10,6 +10,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import axios from 'axios';
+import TaskAltIcon from '@mui/icons-material/TaskAlt';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -72,8 +73,13 @@ function Hero() {
         });
     };
 
+    const [isDisable, setIsDisable] = useState(false);
+    const [isSent, setIsSent] = useState(false);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsDisable(true);
+        setIsSent(true);
 
         try {
             const res = await axios.post("https://portfolio-u0tl.onrender.com/api/contact", formData);
@@ -85,9 +91,13 @@ function Hero() {
                 email: "",
                 message: "",
             });
+            setIsDisable(false);
         } catch (error) {
             console.error(error);
+            setIsDisable(false);
             alert("Something went wrong");
+        } finally{
+            setIsSent(true);
         }
     };
 
@@ -111,7 +121,7 @@ function Hero() {
                         <input type="email" id="email" className='w-full bg-transparent border-0 border-b-2 border-[#999] focus:border-[var(--primary)] focus:ring-0 outline-none py-2 mb-4' placeholder='satyam@example.com' value={formData.email} name='email' onChange={handleOnChange} required />
                         <label htmlFor="message">Message</label>
                         <textarea id="message" className='w-full bg-transparent border-0 border-b-2 border-[#999] focus:border-[var(--primary)] focus:ring-0 outline-none py-2 mb-4' rows={2} placeholder='Hello! Satyam' value={formData.message} name='message' onChange={handleOnChange} required ></textarea>
-                        <SecondaryButton title="Send" icon={<TelegramIcon />}></SecondaryButton>
+                        <SecondaryButton title={isSent ? "Sent" : isDisable ? "Sending..." : "Send"} icon={isSent ? <TaskAltIcon/> : <TelegramIcon />} isDisabled={isDisable}></SecondaryButton>
                     </form>
                 </div>
             </div>

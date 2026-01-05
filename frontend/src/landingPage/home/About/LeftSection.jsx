@@ -57,7 +57,7 @@ function LeftSection() {
         </span>
       </h2>
       <div className="flex flex-wrap mt-6">
-        <a href="https://drive.google.com/file/d/18YibP_r0MJQ2CcIbFdztLoXPhwWrXQ8j/view?usp=sharing" target="_blank"><SecondaryButton title="Resume"></SecondaryButton></a>
+        <a href="https://drive.google.com/file/d/1QsFPN7z_MW732eAAJwb6TGs2J0314732/view?usp=sharing" target="_blank"><SecondaryButton title="Resume"></SecondaryButton></a>
         <a href="#project"><Button title="View Project" icon="&darr;"></Button></a>
       </div>
     </div>
