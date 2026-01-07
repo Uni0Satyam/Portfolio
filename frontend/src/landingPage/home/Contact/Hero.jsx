@@ -16,43 +16,43 @@ gsap.registerPlugin(ScrollTrigger);
 
 function Hero() {
     const contactContainer = useRef(null);
+    const border = useRef(null);
     const leftSection = useRef(null);
     const rightSection = useRef(null);
 
     useGSAP(
         () => {
-            gsap.from(contactContainer.current, {
-                scrollTrigger: {
-                    trigger: contactContainer.current,
-                    start: "-60% 95%",
-                    end: "70% 10%",
-                    toggleActions: "restart pause resume reverse",
-                },
-                y: 100,
-                delay: 0.2,
-                duration: 1.5,
-                opacity: 0,
-            });
             gsap.from(leftSection.current, {
                 scrollTrigger: {
                     trigger: leftSection.current,
-                    start: "-40% 95%",
-                    toggleActions: "restart pause resume none",
+                    start: "top 70%",
+                    end: "bottom 80%",
+                    toggleActions: "restart pause resume reverse",
                 },
                 x: -90,
-                delay: 0.5,
                 duration: 1.5,
                 opacity: 0,
             });
             gsap.from(rightSection.current, {
                 scrollTrigger: {
                     trigger: rightSection.current,
-                    start: "-40% 95%",
-                    toggleActions: "restart pause resume none",
+                    start: "top 70%",
+                    end: "bottom 80%",
+                    toggleActions: "restart pause resume reverse",
                 },
                 x: 90,
-                delay: 0.5,
                 duration: 1.5,
+                opacity: 0,
+            });
+            gsap.from(border.current, {
+                scrollTrigger: {
+                    trigger: rightSection.current,
+                    start: "top 70%",
+                    end: "bottom 80%",
+                    toggleActions: "restart pause resume reverse",
+                },
+                y: 100,
+                duration: 1,
                 opacity: 0,
             });
         },
@@ -111,7 +111,7 @@ function Hero() {
                     <Badge title="satyamkushwaha10c@gmail.com" icon={<EmailIcon />}></Badge>
                     <Lottie animationData={Contact} loop={true} className='p-2 md:p-4 lg:p-8 xl:p-10'></Lottie>
                 </div>
-                <div className="w-1 h-full bg-[var(--primary)] mx-auto mt-2 hidden md:block"></div>
+                <div ref={border} className="w-1 h-full bg-[var(--primary)] mx-auto mt-2 hidden md:block"></div>
                 <div className='p-8 rounded-lg shadow-[0_10px_10px_1px_var(--primary)]' ref={rightSection}>
                     <h3 className="text-4xl font-bold mb-1">Send a message</h3>
                     <form className='my-4 text-[#999]' onSubmit={handleSubmit}>

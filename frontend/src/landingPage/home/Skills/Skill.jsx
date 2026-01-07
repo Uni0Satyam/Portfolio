@@ -17,13 +17,12 @@ const Skill = () => {
             gsap.from(skillBox.current, {
                 scrollTrigger: {
                     trigger: skill.current,
-                    start: "-10% 95%",
-                    end: "80% 10%",
+                    start: "-10% 70%",
+                    end: "80% 60%",
                     toggleActions: "restart pause resume reverse",
                 },
                 y: 100,
                 delay: 0.5,
-                duration: 1.5,
                 opacity: 0,
             });
         },

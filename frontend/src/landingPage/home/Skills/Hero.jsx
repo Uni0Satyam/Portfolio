@@ -14,24 +14,22 @@ function Hero() {
             gsap.from(skillsContainer.current, {
                 scrollTrigger: {
                     trigger: skillsContainer.current,
-                    start: "-60% 95%",
-                    end: "70% 10%",
+                    start: "-60% 60%",
+                    end: "100% 50%",
                     toggleActions: "restart pause resume reverse",
                 },
                 y: 100,
-                delay: 0.2,
-                duration: 1.5,
                 opacity: 0,
             });
             gsap.from(border.current, {
                 scrollTrigger: {
                     trigger: border.current,
                     start: "top 95%",
-                    toggleActions: "restart pause resume none",
+                    end: "bottom 30%",
+                    toggleActions: "restart pause resume reverse",
                 },
                 x: -100,
                 delay: 0.5,
-                duration: 1.5,
                 opacity: 0,
             });
         },

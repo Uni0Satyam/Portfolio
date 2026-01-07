@@ -13,13 +13,12 @@ function Description() {
             gsap.from(desBox.current, {
                 scrollTrigger: {
                     trigger: desBox.current,
-                    start: "1px 95%",
-                    end: "70%",
+                    start: "40% 70%",
+                    end: "70% 50%",
                     toggleActions: "restart pause resume reverse",
                 },
                 y: 100,
-                delay: 0.2,
-                duration: 1.5,
+                ease: "power1.inOut",
                 opacity: 0,
             });
         },

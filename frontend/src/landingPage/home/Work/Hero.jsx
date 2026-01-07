@@ -21,58 +21,56 @@ function Hero() {
             gsap.from(projectContainer.current, {
                 scrollTrigger: {
                     trigger: projectContainer.current,
-                    start: "-60% 95%",
-                    end: "70% 10%",
+                    start: "10% 80%",
+                    end: "100% 50%",
                     toggleActions: "restart pause resume reverse",
                 },
                 y: 100,
-                delay: 0.2,
-                duration: 1.5,
                 opacity: 0,
             });
             gsap.from(border.current, {
                 scrollTrigger: {
                     trigger: border.current,
-                    start: "top 95%",
-                    toggleActions: "restart pause resume none",
+                    start: "top 80%",
+                    end: "bottom 30%",
+                    toggleActions: "restart pause resume reverse",
                 },
                 x: 100,
                 delay: 0.5,
-                duration: 1.5,
                 opacity: 0,
             });
             gsap.from(leftCard.current, {
                 scrollTrigger: {
                     trigger: leftCard.current,
-                    start: "-40% 95%",
+                    start: "10% 95%",
+                    end: "bottom 95%",
                     toggleActions: "restart pause resume reverse",
                 },
                 x: -120,
-                duration: 0.6,
+                duration: 0.8,
                 opacity: 0,
-                delay: 0.5,
             });
             gsap.from(centerCard.current, {
                 scrollTrigger: {
                     trigger: centerCard.current,
-                    start: "-40% 95%",
+                    start: "10% 95%",
+                    end: "bottom 95%",
                     toggleActions: "restart pause resume reverse",
                 },
                 y: 100,
-                duration: 0.6,
+                duration: 0.5,
                 opacity: 0,
-                delay: 0.5,
             });
             gsap.from(rightCard.current, {
                 scrollTrigger: {
                     trigger: rightCard.current,
-                    start: "-40% 95%",
+                    start: "10% 95%",
+                    end: "bottom 95%",
                     toggleActions: "restart pause resume reverse",
                 },
                 x: 120,
-                duration: 0.6,
+                duration: 0.8,
                 opacity: 0,
-                delay: 0.5,
             });
             gsap.from(button.current, {
                 scrollTrigger: {
@@ -89,7 +87,7 @@ function Hero() {
     );
 
     return (
-        <section className="px-8 md:px-12 lg:px-24 xl:px-32 pt-24 pb-10" id="project" ref={projectContainer}>
+        <section className="px-8 md:px-12 lg:px-24 xl:px-32 pb-10" id="project" ref={projectContainer}>
             <div className="grid grid-cols-1 text-center">
                 <h4 className="text-4xl text-[var(--white)] font-bold" >Projects</h4>
                 <div className="w-42 h-1 bg-[var(--primary)] mx-auto mt-2" ref={border}></div>
