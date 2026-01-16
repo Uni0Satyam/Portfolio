@@ -34,7 +34,8 @@ import geniusLogo from '/assets/education_logo/logoname2.png'
 import kpLogo from '/assets/education_logo/kp.jpeg'
 
 // Project Section Logo's
-
+import image1 from '/assets/project_logo/image1.png'
+import image2 from '/assets/project_logo/image2.png'
 
 export const SkillsInfo = [
   {
@@ -171,9 +172,19 @@ export const SkillsInfo = [
       title: "Hikee",
       description:
         "A small Airbnb-like web app (Express + EJS + MongoDB). This contains the server, views (EJS), static assets and example data used to build and list short-term rental listings and reviews.",
-      // image: githubdetLogo,
+      image: image1,
       tags: ["Ejs","Express","Javascript","CSS","Bootstrap","Node.js","MongoDB","Joi","Passport","Cloudinary","leaflet","Geoapify"],
       github: "https://github.com/Uni0Satyam/Hikee",
       webapp: "https://major-project-gx8l.onrender.com/listings",
+    },
+    {
+      id: 1,
+      title: "QueryFlow-AI",
+      description:
+        "QueryFlow AI is a full‑stack AI-powered chat and query management application inspired by ChatGPT. It allows users to authenticate securely, create conversation threads, send queries, and receive AI-generated responses in real time. The project is built using the MERN stack.",
+      image: image2,
+      tags: ["Express","Javascript","CSS","Node.js","MongoDB","leaflet","Open router","React Spinner"],
+      github: "https://github.com/Uni0Satyam/QueryFlow-AI",
+      webapp: "https://queryflow-ai-64up.onrender.com/",
     },
   ];  

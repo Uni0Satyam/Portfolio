@@ -10,7 +10,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import axios from 'axios';
-import TaskAltIcon from '@mui/icons-material/TaskAlt';
+import { BeatLoader } from 'react-spinners';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -74,12 +74,12 @@ function Hero() {
     };
 
     const [isDisable, setIsDisable] = useState(false);
-    const [isSent, setIsSent] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsDisable(true);
-        setIsSent(true);
+        setLoading(true);
 
         try {
             const res = await axios.post("https://portfolio-u0tl.onrender.com/api/contact", formData);
@@ -96,9 +96,8 @@ function Hero() {
             console.error(error);
             setIsDisable(false);
             alert("Something went wrong");
-        } finally{
-            setIsSent(true);
         }
+        setLoading(false);
     };
 
     return (
@@ -116,12 +115,12 @@ function Hero() {
                     <h3 className="text-4xl font-bold mb-1">Send a message</h3>
                     <form className='my-4 text-[#999]' onSubmit={handleSubmit}>
                         <label htmlFor="name">Your name</label>
-                        <input type="text" className='w-full bg-transparent border-0 border-b-2 border-[#999] focus:border-[var(--primary)] focus:ring-0 outline-none py-2 mb-4' placeholder='Satyam Kushwaha' id='name' value={formData.name} name='name' onChange={handleOnChange} required />
+                        <input type="text" className='w-full bg-transparent border-0 border-b-2 border-[#999] focus:border-[var(--primary)] focus:ring-0 outline-none py-2 mb-4' placeholder='Satyam Kushwaha' id='name' value={formData.name} name='name' onChange={handleOnChange} required onKeyDown={(e) => e.key === 'Enter' ? handleSubmit() : ""} />
                         <label htmlFor="email">Your Email</label>
-                        <input type="email" id="email" className='w-full bg-transparent border-0 border-b-2 border-[#999] focus:border-[var(--primary)] focus:ring-0 outline-none py-2 mb-4' placeholder='satyam@example.com' value={formData.email} name='email' onChange={handleOnChange} required />
+                        <input type="email" id="email" className='w-full bg-transparent border-0 border-b-2 border-[#999] focus:border-[var(--primary)] focus:ring-0 outline-none py-2 mb-4' placeholder='satyam@example.com' value={formData.email} name='email' onChange={handleOnChange} required onKeyDown={(e) => e.key === 'Enter' ? handleSubmit() : ""} />
                         <label htmlFor="message">Message</label>
-                        <textarea id="message" className='w-full bg-transparent border-0 border-b-2 border-[#999] focus:border-[var(--primary)] focus:ring-0 outline-none py-2 mb-4' rows={2} placeholder='Hello! Satyam' value={formData.message} name='message' onChange={handleOnChange} required ></textarea>
-                        <SecondaryButton title={isSent ? "Sent" : isDisable ? "Sending..." : "Send"} icon={isSent ? <TaskAltIcon/> : <TelegramIcon />} isDisabled={isDisable}></SecondaryButton>
+                        <textarea id="message" className='w-full bg-transparent border-0 border-b-2 border-[#999] focus:border-[var(--primary)] focus:ring-0 outline-none py-2 mb-4' rows={2} placeholder='Hello! Satyam' value={formData.message} name='message' onChange={handleOnChange} required onKeyDown={(e) => e.key === 'Enter' ? handleSubmit() : ""}></textarea>
+                        <SecondaryButton title={loading ? <BeatLoader color="white" /> : "Send"} icon={loading ? "" : <TelegramIcon />} isDisabled={isDisable}></SecondaryButton>
                     </form>
                 </div>
             </div>

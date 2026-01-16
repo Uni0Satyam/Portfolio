@@ -98,17 +98,24 @@ function Hero() {
                     <Card
                         title="Hikee"
                         desc="A small Airbnb-like web app (Express + EJS + MongoDB). This contains the server, views (EJS), static assets and example data used to build and list short-term rental listings and reviews"
-                        imgSrc="/assets/project_logo/image.png"
+                        imgSrc="/assets/project_logo/image1.png"
                         tags={["Ejs", "Express", "Javascript", "CSS", "Bootstrap", "Node.js", "MongoDB", "Joi", "Passport", "Cloudinary", "leaflet", "Geoapify"]}
                         githubUrl="https://github.com/Uni0Satyam/Hikee"
                         liveUrl="https://major-project-gx8l.onrender.com/listings"
                     ></Card>
                 </div>
                 <div ref={centerCard}>
-                    <Card title="Sample" desc="Sample text" imgSrc="/assets/project_logo/image.png"></Card>
+                    <Card
+                        title="QueryFlow-AI"
+                        desc="QueryFlow AI is a full‑stack AI-powered chat and query management application inspired by ChatGPT. It allows users to authenticate securely, create conversation threads, send queries, and receive AI-generated responses in real time."
+                        imgSrc="/assets/project_logo/image2.png"
+                        tags={["Express", "Javascript", "CSS", "Node.js", "MongoDB", "leaflet", "Open router", "React Spinner"]}
+                        githubUrl="https://github.com/Uni0Satyam/QueryFlow-AI"
+                        liveUrl="https://queryflow-ai-64up.onrender.com"
+                    ></Card>
                 </div>
                 <div ref={rightCard}>
-                    <Card title="Sample" desc="Sample text" imgSrc="/assets/project_logo/image.png"></Card>
+                    <Card title="Sample" desc="Sample text" imgSrc="/assets/project_logo/image1.png"></Card>
                 </div>
             </div>
             <div className="text-center" ref={button}>

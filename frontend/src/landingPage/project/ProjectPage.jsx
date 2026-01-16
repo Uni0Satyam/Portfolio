@@ -37,7 +37,7 @@ function ProjectPage() {
                         key={project.id}
                         title={project.title}
                         desc={project.description}
-                        imgSrc="/assets/project_logo/image.png"
+                        imgSrc={project.image}
                         tags={project.tags}
                         githubUrl={project.github}
                         liveUrl={project.webapp}
