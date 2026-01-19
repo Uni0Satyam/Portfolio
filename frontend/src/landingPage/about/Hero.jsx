@@ -1,6 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import SmallBadge from "../universal/SmallBadge"
-import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
+import MapView from "./MapView";
 import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -14,6 +14,7 @@ function Hero() {
     const header1 = useRef(null);
     const header2 = useRef(null);
     const header3 = useRef(null);
+    const header4 = useRef(null);
     const para1 = useRef(null);
     const para2 = useRef(null);
     const para3 = useRef(null);
@@ -28,7 +29,7 @@ function Hero() {
                 duration: 0.6,
                 opacity: 0,
                 delay: 0.5,
-                ease: "bounce.inOut",
+                ease: "ease.inOut",
             });
             tl.from(para1.current, {
                 y: 100,
@@ -50,7 +51,7 @@ function Hero() {
                 duration: 0.6,
                 opacity: 0,
                 delay: 0.5,
-                ease: "bounce.inOut",
+                ease: "ease.inOut",
             });
             t2.from(para4.current, {
                 y: 100,
@@ -63,11 +64,20 @@ function Hero() {
                 duration: 0.6,
                 opacity: 0,
                 delay: 0.5,
-                ease: "bounce.inOut",
+                ease: "ease.inOut",
             });
             t3.from(skillParent.current, {
                 y: 100,
                 opacity: 0,
+            });
+
+            const t4 = gsap.timeline();
+            t4.from(header4.current, {
+                y: -100,
+                duration: 0.6,
+                opacity: 0,
+                delay: 0.5,
+                ease: "ease.inOut",
             });
         },
         { scope: aboutContainer }
@@ -109,6 +119,12 @@ function Hero() {
                             <SmallBadge title="Node JS"></SmallBadge>
                             <SmallBadge title="JavaScript"></SmallBadge>
                             <SmallBadge title="See More..." link="/#skill"></SmallBadge>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 className='text-[var(--white)] text-2xl font-bold mt-8' ref={header4}>Find me on <span className="text-[var(--primary)]">Map</span></h4>
+                        <div className="mt-8">
+                        <MapView></MapView>
                         </div>
                     </div>
                 </div>

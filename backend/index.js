@@ -7,12 +7,12 @@ const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 3000;
 const uri = process.env.MONGO_URL;
-const {MessageModel} = require("./model/MessageModel")
+const { MessageModel } = require("./model/MessageModel")
 
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (req,res) => {
+app.get("/", (req, res) => {
     res.send("Backend running");
 });
 
@@ -30,6 +30,10 @@ app.post("/api/contact", async (req, res) => {
     res.status(201).json({
         message: "Message received successfully!"
     });
+});
+
+app.get("/api/map-key", (req, res) => {
+    res.json({ apiKey: process.env.MAP_API_KEY });
 });
 
 app.listen(PORT, () => {
