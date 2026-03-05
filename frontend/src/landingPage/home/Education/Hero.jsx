@@ -1,51 +1,33 @@
 import { education } from "/src/constant.js";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-
-gsap.registerPlugin(ScrollTrigger);
+import { motion } from "motion/react";
 
 function Hero() {
-    const eduContainer = useRef(null);
-    const border = useRef(null);
 
-    useGSAP(
-        () => {
-            gsap.from(eduContainer.current, {
-                scrollTrigger: {
-                    trigger: eduContainer.current,
-                    start: "10% 80%",
-                    end: "50% 50%",
-                    toggleActions: "restart pause resume reverse",
-                },
-                y: 100,
-                opacity: 0,
-            });
-            gsap.from(border.current, {
-                scrollTrigger: {
-                    trigger: border.current,
-                    start: "top 100%",
-                    end: "bottom 40%",
-                    toggleActions: "restart pause resume reverse",
-                },
-                x: -100,
-                delay: 0.5,
-                opacity: 0,
-            });
-        },
-        { scope: eduContainer }
-    );
     return (
         <section
             id="education"
-            className="py-24 pb-24 px-[12vw] md:px-[7vw] lg:px-[16vw] font-sans bg-skills-gradient clip-path-custom-3" ref={eduContainer}>
+            className="py-24 pb-24 px-[12vw] md:px-[7vw] lg:px-[16vw] font-sans bg-skills-gradient clip-path-custom-3">
             <div className="text-center mb-16">
-                <h2 className="text-4xl font-bold text-white">Education</h2>
-                <div className="w-48 h-1 bg-[var(--primary)] mx-auto mt-2" ref={border}></div>
-                <p className="text-[#999] mt-3 mb-12 font-semibold">
+                <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                    className="text-4xl font-bold text-white">Education</motion.h2>
+                <motion.div
+                    initial={{ opacity: 0, x: -100 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                    className="w-48 h-1 bg-[var(--primary)] mx-auto mt-2"></motion.div>
+                <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.8, delay: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+                    className="text-[#999] mt-3 mb-12 font-semibold">
                     My education has been a journey of learning and development. Here are the details of my academic background
-                </p>
+                </motion.p>
             </div>
 
             <div className="relative">
@@ -65,7 +47,11 @@ function Hero() {
                             />
                         </div>
 
-                        <div
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.2 }}
+                            transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
                             className={`w-full sm:max-w-md p-4 sm:p-8 rounded-2xl shadow-2xl border border-white bg-[var(--secondary-dark)] backdrop-blur-md shadow-[0_0_20px_1px_var(--primary)] ${index % 2 === 0 ? "sm:ml-0" : "sm:mr-0"
                                 } sm:ml-44 sm:mr-44 ml-8 transform transition-transform duration-300 hover:scale-105`}
                         >
@@ -93,7 +79,7 @@ function Hero() {
 
                             <p className="mt-4 text-[#999] font-bold">Grade: {edu.grade}</p>
                             <p className="mt-4 text-[#999]">{edu.desc}</p>
-                        </div>
+                        </motion.div>
                     </div>
                 ))}
             </div>

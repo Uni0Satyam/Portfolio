@@ -1,38 +1,42 @@
 import { SkillsInfo } from "../../../constant";
 import Tilt from "react-parallax-tilt";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-
-gsap.registerPlugin(ScrollTrigger);
+import { motion } from "motion/react";
 
 const Skill = () => {
 
-    const skillBox = useRef(null);
-    const skill = useRef(null);
-
-    useGSAP(
-        () => {
-            gsap.from(skillBox.current, {
-                scrollTrigger: {
-                    trigger: skill.current,
-                    start: "-10% 70%",
-                    end: "80% 60%",
-                    toggleActions: "restart pause resume reverse",
-                },
-                y: 100,
-                delay: 0.5,
-                opacity: 0,
-            });
+    const containerVariant = {
+        hidden: {},
+        visible: {
+            transition: {
+                staggerChildren: 0.15,
+                delayChildren: 0.3,
+            },
         },
-        { scope: skillBox }
-    );
+    };
+
+    const itemVariant = {
+        hidden: { opacity: 0, y: 20 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.6,
+                ease: [0.25, 0.1, 0.25, 1]
+                ,
+            },
+        },
+    };
+
     return (
-        <section className="pb-24 px-[12vw] md:px-[7vw] lg:px-[20vw] font-sans bg-skills-gradient clip-path-custom" ref={skillBox}>
-            <div className="flex flex-wrap gap-1 lg:gap-5 py-10 justify-between" ref={skill}>
+        <section className="pb-24 px-[12vw] md:px-[7vw] lg:px-[20vw] font-sans bg-skills-gradient clip-path-custom" >
+            <div className="flex flex-wrap gap-1 lg:gap-5 py-10 justify-between">
                 {SkillsInfo.map((category) => (
-                    <div key={category.title}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                        key={category.title}
                         className="bg-[var(--secondary-dark)] backdrop-blur-md px-6 sm:px-10 py-8 sm:py-6 mb-10 w-full sm:w-[48%] rounded-2xl border border-white 
           shadow-[0_0_20px_1px_var(--primary)]">
                         <h3 className="text-2xl sm:text-3xl font-semibold text-[#999] text-center mb-4">
@@ -48,11 +52,17 @@ const Skill = () => {
                             transitionSpeed={1000}
                             gyroscope={true}
                         >
-                            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full">
+                            <motion.div
+                                variants={containerVariant}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, amount: 0.2 }}
+                                className="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full">
                                 {category.skills.map((skill) => (
-                                    <div
+                                    <motion.div
+                                        variants={itemVariant}
                                         key={skill.name}
-                                        className="flex items-center justify-center space-x-2 bg-transparent border-2 border-[var(--secondary)] rounded-3xl py-2 px-2 sm:py-2 sm:px-2 md:p-3 text-center"
+                                        className="flex items-center justify-center space-x-2 bg-transparent border-2 border-[var(--secondary)] rounded-3xl p-2 sm:py-2 sm:px-2 md:p-4 text-center"
                                     >
                                         <img
                                             src={skill.logo}
@@ -62,11 +72,11 @@ const Skill = () => {
                                         <span className="text-xs sm:text-sm text-gray-300">
                                             {skill.name}
                                         </span>
-                                    </div>
+                                    </motion.div>
                                 ))}
-                            </div>
+                            </motion.div>
                         </Tilt>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
         </section>

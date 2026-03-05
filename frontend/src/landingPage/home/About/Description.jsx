@@ -1,32 +1,13 @@
-import gsap from "gsap";
-import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
-
+import { motion } from "motion/react";
 function Description() {
-    const desBox = useRef(null);
-
-    useGSAP(
-        () => {
-            gsap.from(desBox.current, {
-                scrollTrigger: {
-                    trigger: desBox.current,
-                    start: "40% 70%",
-                    end: "70% 50%",
-                    toggleActions: "restart pause resume reverse",
-                },
-                y: 100,
-                ease: "power1.inOut",
-                opacity: 0,
-            });
-        },
-        { scope: desBox }
-    );
 
     return (
-        <section className="px-8 md:px-12 lg:px-24 xl:px-32 py-32 grid grid-cols-1" id="about" ref={desBox}>
+        <motion.section
+            initial={{ opacity: 0, y: 20, scale: 0.8 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+            className="px-8 md:px-12 lg:px-24 xl:px-32 py-32 grid grid-cols-1" id="about">
             <div className="md:p-8 lg:p-12 xl:p-24 p-4 bg-[var(--secondary-dark)] text-[#999] rounded-xl">
                 <p className="my-4">Hello! I’m <span className="text-[var(--primary)]">Satyam Kushwaha</span>,a passionate <span className="border-b-2 border-[var(--primary)] font-bold text-[var(--white)]">Full Stack Web Developer</span> and BCA student with a strong focus on building scalable, responsive, and high-performing web interfaces. With a strong foundation in <span className="text-[var(--white)]">React, Node.js, Express, & MongoDB</span>, and component libraries like <span className="text-[var(--white)]">Bootstrap/MaterialUI</span>, I specialize in building scalable UIs that not only look clean — but work flawlessly across devices.
                 </p>
@@ -37,7 +18,7 @@ function Description() {
                     I’m constantly learning, experimenting, and improving my skills, with a clear goal of becoming a strong software engineer who builds meaningful digital experiences. I value continuous learning and personal growth, and I’m always excited to take on new challenges.
                 </p>
             </div>
-        </section>
+        </motion.section>
     );
 }
 

@@ -6,10 +6,9 @@ import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import Icon from "./Icon";
-import { Link , useLocation} from "react-router-dom"
-import gsap from "gsap";
-import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
+import { Link, useLocation } from "react-router-dom";
+import { easeInOut, motion } from 'motion/react';
+
 
 const Navbar = () => {
     const [activeSection, setActiveSection] = useState("home");
@@ -19,7 +18,7 @@ const Navbar = () => {
     const location = useLocation();
 
     useEffect(() => {
-        const path = location.pathname.replace("/","");
+        const path = location.pathname.replace("/", "");
         setActiveSection(path || "home");
     }, [location]);
 
@@ -32,52 +31,57 @@ const Navbar = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    const navBar = useRef(null);
-
-    useGSAP(() => {
-        gsap.from(navBar.current, {
-            y: -100,
-            opacity: 0,
-            duration: 0.8,
-            delay: 0.5,
-        })
-    })
-
     return (
-        <nav className={`flex justify-between items-center px-12 fixed top-0 left-0 right-0 z-50 py-5 
-         ${scrolled ? "bg-white/20 backdrop-blur-lg transition-all duration-300 ease-in-out" : ""}`} ref={navBar}>
+        <motion.nav 
+            initial={{opacity: 0, y: -100}}
+            animate={{opacity: 1, y: 0}}
+            transition={{duration: 1.5, ease: easeInOut, type: "spring"}}
+        className={`flex justify-between items-center px-12 fixed top-0 left-0 right-0 z-50 py-5 
+         ${scrolled ? "bg-white/20 backdrop-blur-lg transition-all duration-300 ease-in-out" : ""}`}>
             <Icon></Icon>
 
             <div className="hidden md:flex">
                 <div className="ring-2 ring-[#84CC16] bg-[var(--secondary-dark)] h-12 items-center p-1 rounded flex">
 
-                    <div className={`mx-1 p-1.5 rounded flex hover:bg-[#5F684A] gap-1 cursor-pointer
+                    <motion.div
+                    whileTap={{ scale: 0.85 }}
+                    transition={{duration: 0.4 }}
+                     className={`mx-1 p-1.5 rounded flex hover:bg-[#5F684A] gap-1 cursor-pointer
                         ${activeSection === "home" ? "bg-gray-200 hover:bg-white" : "text-gray-300"}`}
-                        > <Link to="/">
+                    > <Link to="/">
                             <HomeIcon className="transition-transform duration-600 ease-in-out hover:rotate-[8deg] me-1" />
                             {activeSection === "home" && <span>Home</span>}</Link>
-                    </div>
+                    </motion.div>
 
-                    <div className={`mx-1 p-1.5 rounded flex hover:bg-[#5F684A] gap-1 cursor-pointer
+                    <motion.div
+                    whileTap={{ scale: 0.85 }}
+                    transition={{duration: 0.4 }}
+                    className={`mx-1 p-1.5 rounded flex hover:bg-[#5F684A] gap-1 cursor-pointer
                         ${activeSection === "about" ? "bg-gray-200 hover:bg-white" : "text-gray-300"}`}
-                        > <Link to="/about">
+                    > <Link to="/about">
                             <PersonIcon className="transition-transform duration-600 ease-in-out hover:rotate-[-8deg] me-1" />
                             {activeSection === "about" && <span>About</span>}</Link>
-                    </div>
+                    </motion.div>
 
-                    <div className={`mx-1 p-1.5 rounded flex hover:bg-[#5F684A] gap-1 cursor-pointer 
+                    <motion.div
+                    whileTap={{ scale: 0.85 }}
+                    transition={{duration: 0.4 }}
+                    className={`mx-1 p-1.5 rounded flex hover:bg-[#5F684A] gap-1 cursor-pointer 
                         ${activeSection === "project" ? "bg-gray-200 hover:bg-white" : "text-gray-300"}`}
-                        > <Link to="/project">
+                    > <Link to="/project">
                             <FolderIcon className="transition-transform duration-600 ease-in-out hover:rotate-[8deg] me-1" />
                             {activeSection === "project" && <span>Project</span>}</Link>
-                    </div>
+                    </motion.div>
 
-                    <div className={`mx-1 p-1.5 rounded flex hover:bg-[#5F684A] gap-1 cursor-pointer 
+                    <motion.div 
+                    whileTap={{ scale: 0.85 }}
+                    transition={{duration: 0.4 }}
+                    className={`mx-1 p-1.5 rounded flex hover:bg-[#5F684A] gap-1 cursor-pointer 
                         ${activeSection === "contact" ? "bg-gray-200 hover:bg-white" : "text-gray-300"}`}
-                        > <Link to="/contact">
+                    > <Link to="/contact">
                             <MailIcon className="transition-transform duration-600 ease-in-out hover:rotate-[-8deg] me-1" />
                             {activeSection === "contact" && <span>Contact</span>}</Link>
-                    </div>
+                    </motion.div>
 
                 </div>
             </div>
@@ -113,7 +117,7 @@ const Navbar = () => {
                     </button>
                 </div>
             )}
-        </nav>
+        </motion.nav>
     );
 }
 
