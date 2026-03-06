@@ -41,7 +41,7 @@ const MapView = () => {
     }, []);
 
     return (
-        <div
+        <div className="z-10"
             ref={mapDivRef}
             style={{ height: "30rem", width: "100%" }}
         />
