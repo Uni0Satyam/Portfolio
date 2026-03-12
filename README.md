@@ -4,7 +4,7 @@ A modern, responsive **portfolio** showcasing my projects, skills, and experienc
 Built with **React + Vite** on the frontend and **Node.js + Express + MongoDB** on the backend.
 
 ## 🌐 Live Demo
-🔗 https://portfolio-frontend-vngo.onrender.com
+🔗 https://stymkushwaha.onrender.com
 
 ---
 
@@ -26,7 +26,7 @@ Built with **React + Vite** on the frontend and **Node.js + Express + MongoDB** 
 - React
 - Vite
 - Tailwind CSS / CSS
-- Gsap (Animation)
+- Motion (Animation)
 - Material UI Icons
 
 ### Backend
